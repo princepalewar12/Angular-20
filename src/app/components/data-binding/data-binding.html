@@ -1,0 +1,35 @@
+<p>data-binding works!</p>
+<table>
+  <tr>
+    <td>Course Name:</td>
+    <td>{{ courseName }}</td>
+  </tr>
+  <tr>
+    <td>Is Active:</td>
+    <td>{{ isActive }}</td>
+  </tr>
+  <tr>
+    <td>Current Date:</td>
+    <td>{{ currentDate }}</td>
+  </tr>
+  <tr>
+    <td>Roll Number:</td>
+    <td><input type="text" value="{{rollNumber}}"></td>
+    <td><input type="text" value="{{rollNumber}}" [(ngModel)]="rollNumber" [minLength]="minLengthCount"> </td>
+    <td [class]="styleClass">{{Author_Name}}</td>
+  </tr>
+  <tr>
+    <td>
+      <button (click)="updateCourseName()">Update Course Name</button>:
+    </td>
+    <td><input type="text" [(ngModel)]="courseName"></td>
+  </tr>
+  <tr>
+    <td>
+      <select #sel (change)="showAlert(sel.value)">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+    </td>
+
+</table>
