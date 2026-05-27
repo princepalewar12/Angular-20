@@ -4,10 +4,11 @@ import { Admin } from './components/admin/admin';
 import { User } from './components/user/user';
 import { DataBinding } from './components/data-binding/data-binding';
 import { Signals } from './components/signals/signals';
+import { ControlFLow } from './components/control-flow/control-flow';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,Admin,User,DataBinding,Signals],
+  imports: [RouterOutlet,Admin,User,DataBinding,Signals,ControlFLow],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

@@ -1,0 +1,85 @@
+<p>control-flow works!</p>
+
+<div class="row">
+  <div class="col-3">
+    <select [(ngModel)]="selectCast" name="" id="" class="form-select">
+      <option>abc Cast</option>
+      <option>def Cast</option>
+      <option>xyz Cast</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div class="col-3">
+    @if(selectCast == 'Other'){
+    <input type="text" class="form-control" placeholder="other value">
+    } @else if(selectCast == 'abc Cast'){
+    <span>abc Cast</span>
+
+    } @else if(selectCast == 'def Cast'){
+    <span>def Cast</span>
+
+    } @else if(selectCast == 'xyz Cast'){
+    <span>xyz Cast</span>
+    } @else {
+    <span>Select Cast</span>
+    }
+  </div>
+</div>
+<div class="row">
+  <div class="col-4">
+    @if(isStudents() == true){
+
+    <span class="text-success">Student is active</span>
+    }@else{
+
+    <span class="text-danger">Student is de-active</span>
+    }
+  </div>
+  <div class="col-4">
+    <button class="btn btn-success" (click)="changeStatus(true)">Make Active</button>
+    <button class="btn btn-warning ms-2" (click)="changeStatus(false)">Make De-active</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3">
+    <ul>
+      @for(item of cityList; track $index){
+      <li>{{item}}</li>
+      }
+    </ul>
+  </div>
+
+
+  <div class="col-3">
+    @for(item of cityList; track $index){
+    <textarea name="" [value]="item" id=""></textarea>
+    }
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-4">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>sr. no.</th>
+          <th>name</th>
+          <th>city</th>
+          <th>status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(item of studentList; track $index){
+
+        <tr>
+
+          <td>{{$index +1}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.city}}</td>
+          <td>{{item.status? 'Active':'De-active'}}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
