@@ -1,0 +1,32 @@
+<p>attributes works!</p>
+<div class="row">
+  <div class="col-4">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>sr. no.</th>
+          <th>name</th>
+          <th>city</th>
+          <th>status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(item of studentList; track $index){
+
+        <tr>
+
+          <td>{{$index +1}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.city}}</td>
+          <td [ngClass]="item.status == true? 'bg-info':'bg-warning'">{{item.status}}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3" [ngStyle]="myCss">
+    <h1>Hello world!</h1>
+  </div>
+</div>
