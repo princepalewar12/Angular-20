@@ -14,5 +14,6 @@ export const routes: Routes = [
   { path: 'admin', component: Admin },
   { path: 'signal', component: Signals },
   { path: 'API-call', component: Photos },
+  { path: 'user', component: User },
   {path: '**', component: NotFound}
 ];
