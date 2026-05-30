@@ -5,6 +5,7 @@ import { Admin } from './components/admin/admin';
 import { Signals } from './components/signals/signals';
 import { User } from './components/user/user';
 import { NotFound } from './components/not-found/not-found';
+import { Photos } from './components/photos/photos';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'databinding', pathMatch: 'full' },
@@ -12,6 +13,6 @@ export const routes: Routes = [
   { path: 'databinding', component: DataBinding },
   { path: 'admin', component: Admin },
   { path: 'signal', component: Signals },
+  { path: 'API-call', component: Photos },
   {path: '**', component: NotFound}
 ];
-// Time 2:14 hr
