@@ -1,10 +1,12 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { PhotosService } from './photos-service';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, NgForm } from "@angular/forms";
+import { JsonPipe } from '@angular/common';
+import { takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-photos',
-  imports: [FormsModule],
+  imports: [FormsModule, JsonPipe],
   providers: [PhotosService],
   templateUrl: './photos.html',
   styleUrl: './photos.scss',
@@ -20,8 +22,9 @@ export class Photos implements OnInit {
     "url": "",
     "thumbnailUrl": ""
   }
+  isFormSubmitted = signal<boolean>(false)
   ngOnInit() {
-    this.getPhotoDetails()
+    // this.getPhotoDetails()
   }
 
   getPhotoDetails() {
@@ -34,12 +37,18 @@ export class Photos implements OnInit {
       }
     })
   }
-  setPhotoData() {
-    this.photosService.addPhotoData(this.payload).subscribe((res: any) => {
-      this.getPhotoDetails();
-    })
+  setPhotoData(form: NgForm) {
+    debugger;
+    this.isFormSubmitted.set(true)
+    if (form.valid) {
+      this.photosService.addPhotoData(this.payload).subscribe((res: any) => {
+        this.getPhotoDetails();
+        form.reset();
+        this.isFormSubmitted.set(false);
+      })
+    }
   }
   editPhotoData(data: any) {
-    this.payload =data
+    this.payload = data
   }
 }

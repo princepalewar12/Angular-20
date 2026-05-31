@@ -43,32 +43,62 @@
         Photos Details
       </div>
       <div class="card-body">
-        <form class="form">
+        <form class="form" #form="ngForm">
           <div class="row">
             <div class="col-6">
-              <label for="title">Id</label>
-              <input type="text" id="title" [(ngModel)]="payload.id" class="form-control" name="id">
-            </div>
-            <div class="col-6">
               <label for="title">Title</label>
-              <input type="text" id="title" [(ngModel)]="payload.title" class="form-control" name="title">
+              <input type="text" required minlength="5" #titleTem="ngModel" id="title" [(ngModel)]="payload.title"
+                class="form-control" name="title">
+              @if(titleTem.touched || titleTem.dirty || isFormSubmitted()){
+              <div class="text-danger">
+                @if(titleTem.errors?.['required'] == true){
+
+                <span>This is required</span>
+                }@if(titleTem.errors?.['minlength']){
+                <span>Min 5 char is required.</span>
+                }
+              </div>
+              }
             </div>
             <div class="col-6">
               <label for="title">Url</label>
-              <input type="text" id="title" [(ngModel)]="payload.url" class="form-control" name="url">
+              <input type="text" required minlength="20" #urlTem="ngModel" id="title" [(ngModel)]="payload.url"
+                class="form-control" name="url">
+              @if(urlTem.touched || urlTem.dirty || isFormSubmitted()){
+              <div class="text-danger">
+                @if(urlTem.errors?.['required'] == true){
+
+                <span>This is required</span>
+                }@if(urlTem.errors?.['minlength']){
+                <span>Min 20 char is required.</span>
+                }
+              </div>
+              }
             </div>
             <div class="col-6">
               <label for="title">Thumbnail Url</label>
-              <input type="text" id="title" [(ngModel)]="payload.thumbnailUrl" class="form-control" name="thumbnailUrl">
+              <input type="text" required #thumbnailTem="ngModel" id="title" [(ngModel)]="payload.thumbnailUrl"
+                class="form-control" name="thumbnailUrl">
+              @if(thumbnailTem.touched || thumbnailTem.dirty || isFormSubmitted()){
+              <div class="text-danger">
+                @if(thumbnailTem.errors?.['required'] == true){
+
+                <span>This is required</span>
+                }@if(thumbnailTem.errors?.['minlength']){
+                <span>Min 5 char is required.</span>
+                }
+              </div>
+              }
             </div>
           </div>
           <div class="row mt-2">
             <div class="col-6 text-center">
-              <button (click)="setPhotoData()" type="submit" class="btn btn-primary">Reset</button>
+              <button type="submit" (click)="form.reset()" class="btn btn-primary">Reset</button>
 
             </div>
             <div class="col-6 text-center">
-              <button type="submit" class="btn btn-secondary">Save</button>
+              <button (click)="setPhotoData(form)" [disabled]="!form.valid" type="submit"
+                class="btn btn-warning">Save</button>
 
             </div>
           </div>
