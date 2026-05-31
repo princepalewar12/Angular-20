@@ -106,21 +106,61 @@
             <div class="mb-3">
               <label class="form-label">Full Name</label>
               <input type="text" formControlName="fullName" class="form-control" placeholder="Enter full name" />
+              @if(userForm.controls['fullName'].touched || userForm.controls['fullName'].dirty || isFormSubmitted()){
+              <div class="text-danger">
+                @if(userForm.controls['fullName'].errors?.['required']){
+
+                <span>This is required</span>
+                }@if(userForm.controls['fullName'].errors?.['minlength']){
+                <span>Min 5 char is required.</span>
+                }
+              </div>
+              }
             </div>
 
             <div class="mb-3">
               <label class="form-label">Email ID</label>
               <input type="email" formControlName="emailId" class="form-control" placeholder="Enter email address" />
+              @if(userForm.controls['emailId'].touched || userForm.controls['emailId'].dirty || isFormSubmitted()){
+              <div class="text-danger">
+                @if(userForm.controls['emailId'].errors?.['required']){
+
+                <span>Email is required</span>
+                }@if(userForm.controls['emailId'].errors?.['minlength']){
+                <span>Min 5 char is required.</span>
+                }
+              </div>
+              }
             </div>
 
             <div class="mb-3">
               <label class="form-label">Password</label>
               <input type="password" formControlName="password" class="form-control" placeholder="Enter password" />
+              @if(userForm.controls['password'].touched || userForm.controls['password'].dirty || isFormSubmitted()){
+              <div class="text-danger">
+                @if(userForm.controls['password'].errors?.['required']){
+
+                <span>This is required</span>
+                }@if(userForm.controls['password'].errors?.['minlength']){
+                <span>Min 5 char is required.</span>
+                }
+              </div>
+              }
             </div>
 
             <div class="mb-4">
               <label class="form-label">Mobile No</label>
               <input type="tel" formControlName="mobileNo" class="form-control" placeholder="+91 XXXXX XXXXX" />
+              @if(userForm.controls['mobileNo'].touched || userForm.controls['mobileNo'].dirty || isFormSubmitted()){
+              <div class="text-danger">
+                @if(userForm.controls['mobileNo'].errors?.['required']){
+
+                <span>This is required</span>
+                }@if(userForm.controls['mobileNo'].errors?.['minlength']){
+                <span>Min 5 char is required.</span>
+                }
+              </div>
+              }
             </div>
 
             <div class="d-grid gap-2">

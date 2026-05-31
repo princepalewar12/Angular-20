@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, signal } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from './user-service';
-import { Observable } from 'rxjs';
+import { Observable, takeUntil } from 'rxjs';
 import { AsyncPipe } from '@angular/common'
 
 @Component({
@@ -13,32 +13,36 @@ import { AsyncPipe } from '@angular/common'
 export class User {
   userForm: FormGroup = new FormGroup({
     userId: new FormControl(0),
-    emailId: new FormControl(""),
-    password: new FormControl(""),
-    fullName: new FormControl(""),
-    mobileNo: new FormControl(""),
+    emailId: new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(6)]),
+    password: new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(6)]),
+    fullName: new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(6)]),
+    mobileNo: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
   })
   private userService = inject(UserService)
   public userList$: Observable<any[]>;
-
+  isFormSubmitted = signal<boolean>(false)
   constructor() {
     this.userList$ = this.userService.getUserData();
   }
   onSaveUser() {
+    this.isFormSubmitted.set(true)
     const formValues = this.userForm.value;
     console.log(formValues);
-    this.userService.addUser(formValues).subscribe({
-      next: (res) => {
-        alert("User added succesfully")
-        console.log(res);
+    if (this.userForm.valid) {
+      this.userService.addUser(formValues).subscribe({
+        next: (res) => {
+          alert("User added succesfully")
+          console.log(res);
+          this.isFormSubmitted.set(false);
 
-      }, error(err) {
-        console.log(err);
+        }, error(err) {
+          console.log(err);
 
-      }
-    })
+        }
+      })
+    }
   }
-  editUser(user:any) {
+  editUser(user: any) {
     this.userForm = new FormGroup({
       userId: new FormControl(user.userId),
       emailId: new FormControl(user.emailId),
