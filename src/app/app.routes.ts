@@ -6,6 +6,7 @@ import { Signals } from './components/signals/signals';
 import { User } from './components/user/user';
 import { NotFound } from './components/not-found/not-found';
 import { Photos } from './components/photos/photos';
+import { RxjsBasics } from './components/rxjs-basics/rxjs-basics';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'databinding', pathMatch: 'full' },
@@ -15,5 +16,7 @@ export const routes: Routes = [
   { path: 'signal', component: Signals },
   { path: 'API-call', component: Photos },
   { path: 'user', component: User },
-  {path: '**', component: NotFound}
+  { path: 'rxjs', component: RxjsBasics },
+  {path: '**', component: NotFound},
+
 ];
