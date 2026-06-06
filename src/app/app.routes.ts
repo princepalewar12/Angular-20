@@ -8,6 +8,7 @@ import { NotFound } from './components/not-found/not-found';
 import { Photos } from './components/photos/photos';
 import { RxjsBasics } from './components/rxjs-basics/rxjs-basics';
 import { RxjsEpisodeTwo } from './components/rxjs-episode-two/rxjs-episode-two';
+import { RxjsEpisodeThree } from './components/rxjs-episode-three/rxjs-episode-three';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'databinding', pathMatch: 'full' },
@@ -19,6 +20,7 @@ export const routes: Routes = [
   { path: 'user', component: User },
   { path: 'rxjs', component: RxjsBasics },
   { path: 'episode-2', component: RxjsEpisodeTwo },
+  { path: 'episode-3', component: RxjsEpisodeThree },
   {path: '**', component: NotFound},
 
 ];

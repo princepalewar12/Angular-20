@@ -26,7 +26,10 @@
           <a class="nav-link" routerLinkActive="active" routerLink="/rxjs">RxJS Basics</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/episode-2">RxJS Basics</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/episode-2">RxJS Episode 2</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/episode-3">RxJS Episode 3</a>
         </li>
         <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,8 +49,16 @@
         </li> -->
       </ul>
       <form class="d-flex" role="search">
+        <select name="" id="" class="form-control me-2" (change)="onRoleChange($event)">
+          <option value="Guest">Guest</option>
+          <option value="Admin">Admin</option>
+          <option value="SuperAdmin">SuperAdmin</option>
+        </select>
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
         <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <form class="d-flex">
+
       </form>
     </div>
   </div>
