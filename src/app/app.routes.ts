@@ -11,6 +11,7 @@ import { RxjsEpisodeTwo } from './components/rxjs-episode-two/rxjs-episode-two';
 import { RxjsEpisodeThree } from './components/rxjs-episode-three/rxjs-episode-three';
 import { RxjsEpisodeFour } from './components/rxjs-episode-four/rxjs-episode-four';
 import { RxjsEpisodeFive } from './components/rxjs-episode-five/rxjs-episode-five';
+import { RxjsEpisodeSix } from './components/rxjs-episode-six/rxjs-episode-six';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'databinding', pathMatch: 'full' },
@@ -26,6 +27,6 @@ export const routes: Routes = [
   { path: 'episode-4', component: RxjsEpisodeFour },
   { path: 'episode-4', component: RxjsEpisodeFour },
   { path: 'episode-5', component: RxjsEpisodeFive },
+  { path: 'episode-6', component: RxjsEpisodeSix },
   { path: '**', component: NotFound },
-
 ];
